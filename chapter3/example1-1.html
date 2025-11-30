@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <audio controls autoplay>
+        <source src="media/happy-dog-day-indie-rock-385939.mp3" type="audio/mpeg">
+
+    </audio>
+    <video width="640" height="360" controls poster="thumbnail.jpg"> <!-- รูปก่อนกดเล่น -->>
+        <source src="media/139433-772291290_small.mp4" type="video/mp4">
+
+
+    </video>
+    <!-- ✅ ดี ให้ Browser เลือกรูปที่เหมาะสม -->
+    <img src="media/dog-3694719_1280.jpg" srcset="media/dog-3694719_1280.jpg 640w, 
+              media/dog-3694719_1280.jpg 1280w, 
+              media/dog-3694719_1280.jpg 1920w" sizes="(max-width: 768px) 640px, 
+              (max-width: 1366px) 1280px, 1920px" alt="manu">
+    <picture>
+        <!-- มือถือ แสดงรูปแนวตั้ง -->
+        <source media="(max-width: 768px)" srcset="media/mahonia-9895458_640.jpg">
+        <!-- Desktop แสดงรูปแนวนอน -->
+        <source media="(min-width: 769px)" srcset="media/thumbnail.jpg">
+
+        <!-- รูปสำรอง -->
+        <img src="default.jpg" alt="รูปภาพ">
+    </picture>
+
+
+</body>
+
+</html>

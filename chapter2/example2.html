@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From Example</title>
+</head>
+
+<body>
+    <form action="adduser.php" method="post">
+        <form action="/submit" method="POST">
+            <!-- ใส่ input fields ตรงนี้ -->
+            <!-- Input ธรรมดา -->
+            <label for="username">ชื่อผู้ใช้</label>
+            <input type="text" id="username" name="username">
+
+            <!-- Email (มี validation อัตโนมัติ) -->
+            <label for="email">อีเมล</label>
+            <input type="email" id="email" name="email">
+
+            <!-- Password (ซ่อนตัวอักษร) -->
+            <label for="password">รหัสผ่าน</label>
+            <input type="password" id="password" name="password">
+
+            <!-- ข้อความหลายบรรทัด -->
+            <label for="message">ข้อความ</label>
+            <textarea id="message" name="message" rows="5"></textarea>
+
+            <!-- ตัวเลข -->
+            <label for="age">อายุ</label>
+            <input type="number" id="age" name="age" min="1" max="120">
+
+            <!-- วันที่ -->
+            <label for="birthday">วันเกิด</label>
+            <input type="date" id="birthday" name="birthday">
+
+            <!-- เวลา -->
+            <label for="meeting">เวลานัดหมาย</label>
+            <input type="time" id="meeting" name="meeting">
+            <!-- Radio Buttons (เลือกได้ 1 อย่าง) -->
+            <p>เพศ</p>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">ชาย</label>
+
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">หญิง</label>
+
+            <!-- Checkboxes (เลือกได้หลายอย่าง) -->
+            <p>ความสนใจ</p>
+            <input type="checkbox" id="coding" name="interests" value="coding">
+            <label for="coding">เขียนโค้ด</label>
+
+            <input type="checkbox" id="design" name="interests" value="design">
+            <label for="design">ออกแบบ</label>
+
+            <!-- Dropdown (Select) -->
+            <label for="country">ประเทศ</label>
+            <select id="country" name="country">
+                <option value="">-- เลือกประเทศ --</option>
+                <option value="th">ไทย</option>
+                <option value="us">สหรัฐอเมริกา</option>
+                <option value="jp">ญี่ปุ่น</option>
+            </select>
+
+            <!-- ไฟล์ -->
+            <label for="avatar">อัปโหลดรูปโปรไฟล์</label>
+            <input type="file" id="avatar" name="avatar" accept="image/*">
+
+            <!-- สี -->
+            <label for="color">เลือกสี</label>
+            <input type="color" id="color" name="color" value="#ff0000">
+
+            <!-- URL -->
+            <label for="website">เว็บไซต์</label>
+            <input type="url" id="website" name="website">
+
+            <!-- โทรศัพท์ -->
+            <label for="phone">เบอร์โทร</label>
+            <input type="tel" id="phone" name="phone">
+
+
+            <button type="submit">ส่งข้อมูล</button>
+        </form>
+
+
+    </form>
+</body>
+
+</html>
