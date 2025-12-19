@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Cards</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            padding: 20px;
+        }
+
+
+        .profile-card {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 18px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+
+
+        .profile-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+        }
+
+
+        .profile-card__avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+
+        .profile-card__header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+
+        .profile-card__name {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #111827;
+        }
+
+
+        .profile-card__title {
+            margin: 2px 0 0;
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+
+        .profile-card__follow {
+            margin-left: auto;
+            background: #6366f1;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .profile-card__follow:hover {
+            background: #4f46e5;
+            transform: scale(1.05);
+        }
+
+
+        .profile-card__bio {
+            margin-top: 10px;
+            color: #4b5563;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+
+        .profile-card__meta {
+            list-style: none;
+            padding: 0;
+            margin-top: 14px;
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid #f3f4f6;
+            padding-top: 12px;
+        }
+
+        .profile-card__meta li {
+            text-align: center;
+        }
+
+        .profile-card__meta strong {
+            display: block;
+            font-size: 1.05rem;
+            color: #111827;
+        }
+
+        .cards-grid {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: url("https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17") center/cover no-repeat;
+        }
+
+        body {
+            font-family: 'Sarabun', sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <h2> Email & Phone Links</h2>
+    <p>
+        ติดต่อได้ที่:
+        <br>Email: <a
+            href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=CllgCJvnJtGWWJHlWSVxfMmFCNvWNgshmqBnVKQvDNrCfNNMrrmszSCqDxgjLFSNRmrdMtdwXFL">67280024@stu.eau.ac.th</a>
+        <br>Phone: <a href="tel:+66822511204">0822511204</a>
+    </p>
+    <hr>
+    <p>แนะนำลิงก์ท่องเที่ยวที่เกี่ยวข้อง:</p>
+    <ul>
+        <li><a href="https://www.tourismthailand.org" target="_blank">การท่องเที่ยวแห่งประเทศไทย</a></li>
+        <li><a href="https://www.bangkoktourist.com" target="_blank">ท่องเที่ยวกรุงเทพ</a></li>
+        <li><a href="https://www.traveloka.com" target="_blank">Traveloka</a></li>
+        <li><a href="https://www.tripadvisor.com" target="_blank">TripAdvisor</a></li>
+    </ul>
+    <hr>
+
+    <div class="cards-grid">
+
+
+        <div class="profile-card">
+            <div class="profile-card__header">
+                <img class="profile-card__avatar" src="Media/Jakk.png" alt="Jane Doe">
+                <div class="profile-card__info">
+                    <h2 class="profile-card__name">Jakkapat</h2>
+                    <p class="profile-card__title">Senior Product Designer</p>
+                </div>
+                <a href="https://www.instagram.com/jxk_1st/" class="profile-card__follow">Follow</a>
+
+
+            </div>
+
+            <p class="profile-card__bio">Product designer focused on simple, delightful interfaces.</p>
+
+            <ul class="profile-card__meta">
+                <li><strong>327</strong>Followers</li>
+                <li><strong>549</strong>Following</li>
+                <li><strong>98</strong>Projects</li>
+            </ul>
+        </div>
+
+</body>
+
+</html>
