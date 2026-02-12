@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8" />
+<title>Babee luv u naaaaa</title>
+
+<style>
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #0f1a20, #182c35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  color: #fff;
+}
+
+/* ===== MAIN CARD ===== */
+.letter-window {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+  padding: 40px 60px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+  animation: pop 0.6s ease forwards;
+}
+
+@keyframes pop {
+  from { transform: scale(0.9); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+h1 {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+
+/* ===== YES BUTTON ===== */
+.yes-btn {
+  padding: 14px 32px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, #ff77a9, #ff4f81);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.yes-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 30px rgba(0,0,0,.3);
+}
+
+/* ===== NO BUTTON (SEPARATED) ===== */
+.no-btn {
+  position: fixed;
+  top: 70%;
+  left: 55%;
+  padding: 12px 28px;
+  border-radius: 999px;
+  border: none;
+  background: #2b3f48;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .2s ease;
+  z-index: 999;
+}
+
+/* ===== POPUP ===== */
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .4s ease;
+}
+
+.popup.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.popup-box {
+  background: #fff;
+  color: #333;
+  padding: 40px 60px;
+  border-radius: 20px;
+  text-align: center;
+  transform: scale(.7);
+  transition: transform .4s ease;
+}
+
+.popup.show .popup-box {
+  transform: scale(1);
+}
+
+.popup-box h2 {
+  font-size: 32px;
+}
+
+.popup-box span {
+  font-size: 50px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="letter-window">
+  <h1>Rak kao mai?</h1>
+  <p>💖</p>
+  <button class="yes-btn">YES</button>
+</div>
+
+<button class="no-btn">NO</button>
+
+<div class="popup" id="popup">
+  <div class="popup-box">
+    <h2>! แฮะๆ 💕</h2>
+  </div>
+</div>
+
+<script>
+/* ===== NO BUTTON RUN ===== */
+const noBtn = document.querySelector('.no-btn');
+
+function moveNo() {
+  const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+  const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+}
+
+noBtn.addEventListener('mouseenter', moveNo);
+noBtn.addEventListener('click', moveNo);
+
+/* ===== YES POPUP ===== */
+const yesBtn = document.querySelector('.yes-btn');
+const popup = document.getElementById('popup');
+
+yesBtn.addEventListener('click', () => {
+  popup.classList.add('show');
+});
+
+popup.addEventListener('click', () => {
+  popup.classList.remove('show');
+});
+</script>
+
+</body>
+</html>
