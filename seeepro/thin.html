@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FitTrack</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Tahoma, sans-serif;
+    background: #f4f6fb;
+    color: #222;
+}
+
+header {
+    background: linear-gradient(135deg, #ff4f81, #ff7aa2);
+    color: white;
+    padding: 25px 20px 35px;
+    border-radius: 0 0 30px 30px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+header p {
+    margin-bottom: 0;
+    opacity: 0.9;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.weight {
+    text-align: center;
+}
+
+.weight h2 {
+    font-size: 42px;
+    color: #ff4f81;
+    margin: 10px 0;
+}
+
+.stats {
+    display: flex;
+    gap: 10px;
+}
+
+.stat {
+    flex: 1;
+    text-align: center;
+    background: #fff0f5;
+    padding: 15px 5px;
+    border-radius: 15px;
+}
+
+.stat b {
+    display: block;
+    font-size: 20px;
+    color: #ff4f81;
+}
+
+input, select {
+    width: 100%;
+    padding: 14px;
+    margin: 7px 0;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: #ff4f81;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.food-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.food-item img {
+    width: 55px;
+    height: 55px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.food-info {
+    flex: 1;
+}
+
+.food-info b {
+    display: block;
+}
+
+.delete {
+    width: auto;
+    background: #eee;
+    color: #ff4f81;
+    padding: 8px 12px;
+    margin: 0;
+}
+
+.meal-title {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+#preview {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-top: 10px;
+    display: none;
+}
+
+.footer-space {
+    height: 30px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>💪 FitTrack</h1>
+    <p>ติดตามการลดน้ำหนักของคุณ</p>
+</header>
+
+<div class="container">
+
+    <!-- น้ำหนัก -->
+    <div class="card weight">
+        <p>น้ำหนักล่าสุด</p>
+        <h2 id="currentWeight">-- KG</h2>
+
+        <input type="number" id="weightInput" placeholder="กรอกน้ำหนัก (kg)">
+        <button onclick="saveWeight()">บันทึกน้ำหนัก ⚖️</button>
+    </div>
+
+    <!-- สถิติ -->
+    <div class="stats">
+
+        <div class="stat">
+            <small>🔥 วันนี้</small>
+            <b id="totalCalories">0</b>
+            <small>kcal</small>
+        </div>
+
+        <div class="stat">
+            <small>🍽️ อาหาร</small>
+            <b id="foodCount">0</b>
+            <small>รายการ</small>
+        </div>
+
+    </div>
+
+    <br>
+
+    <!-- เพิ่มอาหาร -->
+    <div class="card">
+
+        <h2>🍳 เพิ่มอาหาร</h2>
+
+        <select id="meal">
+            <option value="breakfast">🌅 อาหารเช้า</option>
+            <option value="lunch">☀️ อาหารกลางวัน</option>
+            <option value="dinner">🌙 อาหารเย็น</option>
+        </select>
+
+        <input
+            type="text"
+            id="foodName"
+            placeholder="ชื่ออาหาร เช่น ข้าวกะเพรา"
+        >
+
+        <input
+            type="number"
+            id="calories"
+            placeholder="แคลอรี่ (kcal)"
+        >
+
+        <input
+            type="file"
+            id="foodImage"
+            accept="image/*"
+            onchange="previewImage()"
+        >
+
+        <img id="preview">
+
+        <button onclick="addFood()">
+            ➕ เพิ่มอาหาร
+        </button>
+
+    </div>
+
+    <!-- อาหารเช้า -->
+    <div class="card">
+        <h2 class="meal-title">🌅 อาหารเช้า</h2>
+        <div id="breakfastList"></div>
+    </div>
+
+    <!-- อาหารกลางวัน -->
+    <div class="card">
+        <h2 class="meal-title">☀️ อาหารกลางวัน</h2>
+        <div id="lunchList"></div>
+    </div>
+
+    <!-- อาหารเย็น -->
+    <div class="card">
+        <h2 class="meal-title">🌙 อาหารเย็น</h2>
+        <div id="dinnerList"></div>
+    </div>
+
+    <div class="footer-space"></div>
+
+</div>
+
+
+<script>
+
+let foods = JSON.parse(localStorage.getItem("foods")) || [];
+let weight = localStorage.getItem("weight") || "";
+
+let selectedImage = "";
+
+
+/* โหลดน้ำหนัก */
+
+function loadWeight() {
+
+    if (weight) {
+        document.getElementById("currentWeight").innerText =
+            weight + " KG";
+    }
+
+}
+
+
+/* บันทึกน้ำหนัก */
+
+function saveWeight() {
+
+    const input =
+        document.getElementById("weightInput").value;
+
+    if (!input) {
+        alert("กรุณากรอกน้ำหนัก");
+        return;
+    }
+
+    localStorage.setItem("weight", input);
+
+    weight = input;
+
+    document.getElementById("currentWeight").innerText =
+        input + " KG";
+
+    document.getElementById("weightInput").value = "";
+
+}
+
+
+/* Preview รูป */
+
+function previewImage() {
+
+    const file =
+        document.getElementById("foodImage").files[0];
+
+    if (!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+
+        selectedImage = e.target.result;
+
+        const preview =
+            document.getElementById("preview");
+
+        preview.src = selectedImage;
+
+        preview.style.display = "block";
+
+    };
+
+    reader.readAsDataURL(file);
+
+}
+
+
+/* เพิ่มอาหาร */
+
+function addFood() {
+
+    const meal =
+        document.getElementById("meal").value;
+
+    const name =
+        document.getElementById("foodName").value;
+
+    const calories =
+        document.getElementById("calories").value;
+
+    if (!name || !calories) {
+
+        alert("กรุณากรอกชื่ออาหารและแคลอรี่");
+
+        return;
+    }
+
+    const food = {
+
+        id: Date.now(),
+
+        meal: meal,
+
+        name: name,
+
+        calories: Number(calories),
+
+        image: selectedImage
+
+    };
+
+    foods.push(food);
+
+    saveFoods();
+
+    document.getElementById("foodName").value = "";
+    document.getElementById("calories").value = "";
+    document.getElementById("foodImage").value = "";
+
+    document.getElementById("preview").style.display = "none";
+
+    selectedImage = "";
+
+    renderFoods();
+
+}
+
+
+/* บันทึกข้อมูล */
+
+function saveFoods() {
+
+    localStorage.setItem(
+        "foods",
+        JSON.stringify(foods)
+    );
+
+}
+
+
+/* แสดงอาหาร */
+
+function renderFoods() {
+
+    document.getElementById("breakfastList").innerHTML = "";
+    document.getElementById("lunchList").innerHTML = "";
+    document.getElementById("dinnerList").innerHTML = "";
+
+    let totalCalories = 0;
+
+    foods.forEach(food => {
+
+        totalCalories += food.calories;
+
+        let target;
+
+        if (food.meal === "breakfast") {
+            target = "breakfastList";
+        }
+
+        if (food.meal === "lunch") {
+            target = "lunchList";
+        }
+
+        if (food.meal === "dinner") {
+            target = "dinnerList";
+        }
+
+        const image = food.image
+            ? `<img src="${food.image}">`
+            : `<div style="
+                width:55px;
+                height:55px;
+                background:#eee;
+                border-radius:12px;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+              ">🍽️</div>`;
+
+        document.getElementById(target).innerHTML += `
+
+            <div class="food-item">
+
+                ${image}
+
+                <div class="food-info">
+
+                    <b>${food.name}</b>
+
+                    ${food.calories} kcal
+
+                </div>
+
+                <button
+                    class="delete"
+                    onclick="deleteFood(${food.id})"
+                >
+                    🗑️
+                </button>
+
+            </div>
+
+        `;
+
+    });
+
+    document.getElementById("totalCalories").innerText =
+        totalCalories;
+
+    document.getElementById("foodCount").innerText =
+        foods.length;
+
+}
+
+
+/* ลบอาหาร */
+
+function deleteFood(id) {
+
+    foods =
+        foods.filter(food => food.id !== id);
+
+    saveFoods();
+
+    renderFoods();
+
+}
+
+
+/* เริ่มต้น */
+
+loadWeight();
+
+renderFoods();
+
+</script>
+
+</body>
+</html>

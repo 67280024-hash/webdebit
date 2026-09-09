@@ -1,173 +1,103 @@
-<!DOCTYPE html>
-<html lang="th">
+<!doctype html>
+<html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>Babee luv u naaaaa</title>
-
-<style>
-/* ===== RESET ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: system-ui, sans-serif;
-}
-
-body {
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(135deg, #0f1a20, #182c35);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  color: #fff;
-}
-
-/* ===== MAIN CARD ===== */
-.letter-window {
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(12px);
-  padding: 40px 60px;
-  border-radius: 20px;
-  text-align: center;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.4);
-  animation: pop 0.6s ease forwards;
-}
-
-@keyframes pop {
-  from { transform: scale(0.9); opacity: 0; }
-  to   { transform: scale(1); opacity: 1; }
-}
-
-h1 {
-  font-size: 30px;
-  margin-bottom: 10px;
-}
-
-p {
-  font-size: 40px;
-  margin-bottom: 30px;
-}
-
-/* ===== YES BUTTON ===== */
-.yes-btn {
-  padding: 14px 32px;
-  border-radius: 999px;
-  border: none;
-  background: linear-gradient(135deg, #ff77a9, #ff4f81);
-  color: #fff;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform .25s ease, box-shadow .25s ease;
-}
-
-.yes-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 12px 30px rgba(0,0,0,.3);
-}
-
-/* ===== NO BUTTON (SEPARATED) ===== */
-.no-btn {
-  position: fixed;
-  top: 70%;
-  left: 55%;
-  padding: 12px 28px;
-  border-radius: 999px;
-  border: none;
-  background: #2b3f48;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform .2s ease;
-  z-index: 999;
-}
-
-/* ===== POPUP ===== */
-.popup {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .4s ease;
-}
-
-.popup.show {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.popup-box {
-  background: #fff;
-  color: #333;
-  padding: 40px 60px;
-  border-radius: 20px;
-  text-align: center;
-  transform: scale(.7);
-  transition: transform .4s ease;
-}
-
-.popup.show .popup-box {
-  transform: scale(1);
-}
-
-.popup-box h2 {
-  font-size: 32px;
-}
-
-.popup-box span {
-  font-size: 50px;
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy 1 Month ♡ — Love Letter</title>
+  <meta name="description" content="A cute interactive pixel-art love letter celebrating one month of marriage. Open the envelope and answer the question." />
+  <link rel="icon" type="image/png" href="./favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script>document.documentElement.classList.add('js')</script>
+  <link rel="stylesheet" href="./love.css" />
 </head>
-
 <body>
-
-<div class="letter-window">
-  <h1>Rak kao mai?</h1>
-  <p>💖</p>
-  <button class="yes-btn">YES</button>
-</div>
-
-<button class="no-btn">NO</button>
-
-<div class="popup" id="popup">
-  <div class="popup-box">
-    <h2>! แฮะๆ 💕</h2>
+  <!-- atmospheric background -->
+  <div class="fx" aria-hidden="true">
+    <div class="fx__aurora"></div>
+    <div class="fx__vignette"></div>
+    <div class="fx__grain"></div>
   </div>
-</div>
 
-<script>
-/* ===== NO BUTTON RUN ===== */
-const noBtn = document.querySelector('.no-btn');
+  <!-- celebration hearts-rain layer (filled by JS on win) -->
+  <div class="rain" id="rain" aria-hidden="true"></div>
 
-function moveNo() {
-  const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-  const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-  noBtn.style.transform = `translate(${x}px, ${y}px)`;
-}
+  <main class="scene">
+    <!-- Heart confetti layer (parallax depth, filled by JS) -->
+    <div class="confetti" id="confetti" aria-hidden="true"></div>
 
-noBtn.addEventListener('mouseenter', moveNo);
-noBtn.addEventListener('click', moveNo);
+    <!-- STATE 1: shoot Cupid's arrow at the letter to open it -->
+    <div class="stage stage--aim" id="aimStage" tabindex="0" role="application"
+         aria-label="Aim and shoot Cupid's arrow at the letter to open it. Press space to shoot.">
 
-/* ===== YES POPUP ===== */
-const yesBtn = document.querySelector('.yes-btn');
-const popup = document.getElementById('popup');
+      <!-- floating target: the closed envelope -->
+      <div class="target" id="target">
+        <div class="envelope" aria-hidden="true">
+          <span class="envelope__flap"></span>
+          <span class="heart envelope__seal"></span>
+        </div>
+        <p class="target__label">
+          <span class="heart heart--inline"></span>
+          Happy 1 Month
+          <span class="heart heart--inline"></span>
+        </p>
+      </div>
 
-yesBtn.addEventListener('click', () => {
-  popup.classList.add('show');
-});
+      <!-- the flying arrow -->
+      <div class="arrow" id="arrow" aria-hidden="true"></div>
 
-popup.addEventListener('click', () => {
-  popup.classList.remove('show');
-});
-</script>
+      <!-- the bow -->
+      <div class="archer" id="archer" aria-hidden="true">
+        <div class="bow" id="bow"></div>
+        <span class="nock" id="nock"></span>
+      </div>
 
+      <p class="hint" id="hint">
+        <span id="hintText">Aim &amp; release to shoot Cupid&rsquo;s arrow</span>
+        <span class="heart heart--inline"></span>
+      </p>
+    </div>
+
+    <!-- STATE 2: opened "LOVE" window -->
+    <section class="window" id="window" aria-hidden="true">
+      <header class="titlebar">
+        <span class="titlebar__name">LOVE</span>
+        <span class="titlebar__btns">
+          <button class="winbtn" type="button" aria-label="Minimize" tabindex="-1">&#95;</button>
+          <button class="winbtn" type="button" aria-label="Maximize" tabindex="-1">&#9633;</button>
+          <button class="winbtn winbtn--x" type="button" id="closeBtn" aria-label="Close letter">&#10005;</button>
+        </span>
+      </header>
+
+      <div class="heartrow" aria-hidden="true">
+        <span class="heart"></span><span class="hdot"></span>
+        <span class="heart"></span><span class="hdot"></span>
+        <span class="heart"></span>
+      </div>
+
+      <div class="content" id="content">
+        <h1 class="title" id="title">Happy 1 month, my love ♡ Still love me?</h1>
+        <canvas class="cat" id="cat" width="16" height="16" aria-label="A little cat holding a heart" role="img"></canvas>
+        <div class="buttons" id="buttons">
+          <button class="btn btn--yes" type="button" id="yesBtn">YES</button>
+          <button class="btn btn--no"  type="button" id="noBtn">NO</button>
+        </div>
+        <p class="final" id="final" hidden>
+          One month of marriage, a <mark>lifetime</mark> to go.
+          Happy anniversary, my love
+          <span class="heart heart--inline"></span>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- channel watermark -->
+  <a class="brand" id="brand" href="https://www.youtube.com/@CodeChill_a"
+     target="_blank" rel="noopener noreferrer" aria-label="Code &amp; Chill on YouTube">
+    <img src="./logo.png" alt="Code &amp; Chill" width="48" height="48" />
+  </a>
+
+  <script type="module" src="./love.js"></script>
 </body>
 </html>

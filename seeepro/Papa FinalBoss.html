@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ช่างเอก สแตนเลส | งานสแตนเลสพับ ตัด เชื่อม</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap');
+
+    :root {
+      --bg: #ffffff;
+      --bg-alt: #f5f6f7;
+      --ink: #14171a;
+      --ink-soft: #6b7280;
+      --line: #d7dade;
+      --line-strong: #b9bec4;
+      --graphite: #2e3438;
+      --graphite-hover: #1c2124;
+      --steel-sheen-1: #eef0f1;
+      --steel-sheen-2: #dde1e3;
+      --radius-tile: 2px;
+      --maxw: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,
+    h2,
+    h3,
+    .wordmark {
+      font-family: 'Space Grotesk', -apple-system, "Segoe UI", Arial, sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 0;
+      color: var(--ink);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .wrap {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    section {
+      padding: 96px 0;
+    }
+
+    @media (max-width: 720px) {
+      section {
+        padding: 64px 0;
+      }
+    }
+
+    /* ---------- focus & motion ---------- */
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--graphite);
+      outline-offset: 3px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+
+    /* ---------- nav ---------- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: saturate(180%) blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+    }
+
+    .wordmark {
+      font-size: 1.15rem;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .wordmark span {
+      color: var(--ink-soft);
+      font-weight: 500;
+      font-size: 0.7rem;
+      font-family: -apple-system, Arial, sans-serif;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    .nav-links a {
+      font-size: 0.95rem;
+      color: var(--ink);
+      position: relative;
+      padding: 4px 0;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -2px;
+      height: 1px;
+      background: var(--ink);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .nav-cta {
+      background: var(--graphite);
+      color: #fff !important;
+      padding: 10px 20px;
+      font-size: 0.9rem;
+      border: 1px solid var(--graphite);
+    }
+
+    .nav-cta:hover {
+      background: var(--graphite-hover);
+    }
+
+    .nav-cta::after {
+      display: none;
+    }
+
+    .menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .menu-btn span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--ink);
+      margin: 5px 0;
+    }
+
+    @media (max-width: 860px) {
+      .nav-links {
+        position: fixed;
+        inset: 76px 0 auto 0;
+        background: #fff;
+        border-bottom: 1px solid var(--line);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        padding: 8px 28px 20px;
+        transform: translateY(-8px);
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.18s ease;
+      }
+
+      .nav-links.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .nav-links a {
+        width: 100%;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--bg-alt);
+      }
+
+      .nav-cta {
+        margin-top: 8px;
+        text-align: center;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+    }
+
+    /* ---------- hero ---------- */
+    .hero {
+      padding-top: 88px;
+      padding-bottom: 72px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .eyebrow-note {
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+      margin: 0 0 18px;
+      max-width: 30ch;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.3rem, 4.6vw, 3.6rem);
+      line-height: 1.12;
+      max-width: 14ch;
+    }
+
+    .hero p.lead {
+      color: var(--ink-soft);
+      font-size: 1.08rem;
+      max-width: 46ch;
+      margin: 22px 0 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 24px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      border: 1px solid var(--graphite);
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .btn-primary {
+      background: var(--graphite);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--graphite-hover);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .btn-ghost:hover {
+      background: var(--bg-alt);
+    }
+
+    .hero-fold {
+      position: relative;
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--steel-sheen-1) 0%, var(--steel-sheen-2) 45%, #fff 60%, var(--steel-sheen-2) 100%);
+      opacity: 0;
+      transform: translateY(10px);
+      animation: rise 0.7s ease 0.15s forwards;
+    }
+
+    @keyframes rise {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-fold svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero h1,
+    .hero p.lead,
+    .hero-actions {
+      opacity: 0;
+      transform: translateY(10px);
+      animation: rise 0.6s ease forwards;
+    }
+
+    .hero p.lead {
+      animation-delay: 0.08s;
+    }
+
+    .hero-actions {
+      animation-delay: 0.16s;
+    }
+
+    /* ---------- capabilities ---------- */
+    .cap-head {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 40px;
+      margin-bottom: 44px;
+      align-items: end;
+    }
+
+    @media (max-width: 780px) {
+      .cap-head {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .cap-head h2 {
+      font-size: clamp(1.7rem, 3vw, 2.2rem);
+      max-width: 12ch;
+    }
+
+    .cap-head p {
+      color: var(--ink-soft);
+      max-width: 50ch;
+    }
+
+    .cap-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .cap-row {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 32px;
+      padding: 26px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    @media (max-width: 640px) {
+      .cap-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+    }
+
+    .cap-row h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .cap-row p {
+      margin: 0;
+      color: var(--ink-soft);
+      max-width: 60ch;
+    }
+
+    /* ---------- portfolio ---------- */
+    .section-alt {
+      background: var(--bg-alt);
+    }
+
+    .port-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .port-head h2 {
+      font-size: clamp(1.7rem, 3vw, 2.2rem);
+    }
+
+    .port-head p {
+      color: var(--ink-soft);
+      max-width: 42ch;
+      margin: 10px 0 0;
+    }
+
+    /* ---------- portfolio ---------- */
+    .portfolio-scroll {
+      max-height: 760px;
+      overflow-y: auto;
+      padding: 2px 8px 8px 2px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--line-strong) transparent;
+    }
+
+    .portfolio-scroll::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .portfolio-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .portfolio-scroll::-webkit-scrollbar-thumb {
+      background: var(--line-strong);
+      border-radius: 8px;
+    }
+
+    .port-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    @media (max-width: 900px) {
+      .portfolio-scroll {
+        max-height: 720px;
+      }
+
+      .port-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 560px) {
+      .portfolio-scroll {
+        max-height: 650px;
+      }
+
+      .port-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .tile {
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .tile-img {
+      position: relative;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, var(--steel-sheen-1), var(--steel-sheen-2));
+      overflow: hidden;
+    }
+
+    .tile-img::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 46px 46px 0;
+      border-color: transparent #fff transparent transparent;
+      opacity: 0.75;
+    }
+
+    .tile-img .ph-label {
+      position: absolute;
+      left: 14px;
+      bottom: 12px;
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+    }
+
+    .tile-body {
+      padding: 16px 18px 20px;
+    }
+
+    .tile-body h3 {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .tile-body p {
+      margin: 6px 0 0;
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+    }
+
+    /* ---------- process ---------- */
+    .process-list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    @media (max-width: 780px) {
+      .process-list {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .process-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .process-item {
+      padding: 30px 26px;
+      border-left: 1px solid var(--line);
+    }
+
+    .process-item:first-child {
+      border-left: none;
+    }
+
+    @media (max-width: 780px) {
+      .process-item:nth-child(2n+1) {
+        border-left: none;
+      }
+
+      .process-item:nth-child(n+3) {
+        border-top: 1px solid var(--line);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .process-item {
+        border-left: none !important;
+        border-top: 1px solid var(--line);
+      }
+
+      .process-item:first-child {
+        border-top: none;
+      }
+    }
+
+    .process-num {
+      font-family: 'Space Grotesk', Arial, sans-serif;
+      font-weight: 600;
+      color: var(--line-strong);
+      font-size: 1.4rem;
+    }
+
+    .process-item h3 {
+      font-size: 1.02rem;
+      margin-top: 10px;
+    }
+
+    .process-item p {
+      margin: 8px 0 0;
+      color: var(--ink-soft);
+      font-size: 0.92rem;
+    }
+
+    /* ---------- contact ---------- */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    @media (max-width: 820px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+    }
+
+    .contact-grid h2 {
+      font-size: clamp(1.7rem, 3vw, 2.2rem);
+      max-width: 12ch;
+    }
+
+    .contact-grid>div>p {
+      color: var(--ink-soft);
+      max-width: 42ch;
+      margin: 16px 0 0;
+    }
+
+    .channel-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .channel {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 4px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .channel .ch-label {
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+    }
+
+    .channel .ch-value {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .channel a.btn {
+      padding: 9px 18px;
+      font-size: 0.85rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 32px 0;
+    }
+
+    .foot-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .foot-row p {
+      color: var(--ink-soft);
+      font-size: 0.85rem;
+      margin: 0;
+    }
+
+    .portfolio-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 0 24px
+    }
+
+    .portfolio-tab {
+      border: 1px solid var(--line-strong);
+      background: #fff;
+      color: var(--ink);
+      padding: 11px 18px;
+      border-radius: 999px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .2s ease;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, .06);
+    }
+
+    .portfolio-tab:hover {
+      transform: translateY(-1px);
+      border-color: var(--graphite);
+      background: #f5f6f7
+    }
+
+    .portfolio-tab.active {
+      background: var(--graphite);
+      color: #fff;
+      border-color: var(--graphite);
+      box-shadow: 0 3px 8px rgba(0, 0, 0, .16);
+    }
+
+    .portfolio-tab.active:hover {
+      background: var(--graphite-hover);
+      border-color: var(--graphite-hover)
+    }
+
+    .portfolio-category {
+      display: none
+    }
+
+    .portfolio-category.active {
+      display: block
+    }
+
+    .portfolio-category-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 0 0 12px
+    }
+
+    .portfolio-category-head h3 {
+      margin: 0;
+      font-size: 20px
+    }
+
+    .portfolio-category-head span {
+      font-size: 13px;
+      color: var(--ink-soft)
+    }
+
+    .portfolio-category .portfolio-scroll {
+      max-height: 760px
+    }
+
+    @media (max-width:900px) {
+      .portfolio-category .portfolio-scroll {
+        max-height: 720px
+      }
+    }
+
+    @media (max-width:560px) {
+      .portfolio-tabs {
+        gap: 7px
+      }
+
+      .portfolio-tab {
+        padding: 9px 12px;
+        font-size: 13px
+      }
+
+      .portfolio-category-head {
+        align-items: flex-start;
+        flex-direction: column
+      }
+
+      .portfolio-category .portfolio-scroll {
+        max-height: 650px
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="wrap nav">
+      <a href="#top" class="wordmark">ช่างเอก <span>STAINLESS &amp; METAL WORK</span></a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#capabilities">บริการ</a>
+        <a href="#portfolio">ผลงาน</a>
+        <a href="#process">ขั้นตอนทำงาน</a>
+        <a href="#contact" class="nav-cta">ขอใบเสนอราคา</a>
+      </nav>
+      <button class="menu-btn" id="menuBtn" aria-label="เปิดเมนู" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow-note">รับงานสแตนเลสพับ ตัด เชื่อม ทั้งบ้านและโรงงาน</p>
+          <h1>ทุกรอยพับ คือรายละเอียดที่เราใส่ใจ</h1>
+          <p class="lead">งานสแตนเลสสั่งทำตามแบบ ตั้งแต่ราวบันได ครัวสแตนเลส ประตู-รั้ว ไปจนถึงชิ้นงานโรงงาน
+            วัดหน้างานจริง คำนวณรอยพับให้พอดีมิลลิเมตร ไม่มีสะดุด</p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">ขอใบเสนอราคาฟรี</a>
+            <a href="#portfolio" class="btn btn-ghost">ดูผลงานที่ผ่านมา</a>
+          </div>
+        </div>
+        <div class="hero-fold" aria-hidden="true">
+          <svg viewBox="0 0 400 500" preserveAspectRatio="none">
+            <polygon points="0,500 400,500 400,220 0,340" fill="#e2e6e8" />
+            <polygon points="0,340 400,220 400,60 0,150" fill="#eef0f1" />
+            <line x1="0" y1="340" x2="400" y2="220" stroke="#b9bec4" stroke-width="1.5" />
+            <line x1="0" y1="150" x2="400" y2="60" stroke="#c9cdd1" stroke-width="1" />
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPABILITIES -->
+    <section id="capabilities">
+      <div class="wrap">
+        <div class="cap-head">
+          <h2>งานที่รับทำ</h2>
+          <p>รับทั้งงานบ้านและงานโรงงาน ออกแบบ วัดหน้างาน ขึ้นรูป และติดตั้งครบวงจร</p>
+        </div>
+        <div class="cap-list">
+          <div class="cap-row">
+            <h3>ราวบันได &amp; ราวกันตก</h3>
+            <p>งานราวสแตนเลสพับขึ้นรูปตามแบบบ้าน เชื่อมเก็บรอยเรียบ ขัดผิวเงาหรือด้าน ตามที่ต้องการ</p>
+          </div>
+          <div class="cap-row">
+            <h3>ครัวสแตนเลส &amp; เคาน์เตอร์</h3>
+            <p>พับขึ้นรูปเคาน์เตอร์ ซิงก์ ชั้นวาง ตามขนาดหน้างานจริง กันน้ำ ทำความสะอาดง่าย ทนการใช้งานหนัก</p>
+          </div>
+          <div class="cap-row">
+            <h3>ประตู รั้ว &amp; งานเหล็กดัด</h3>
+            <p>ออกแบบลวดลายตามสไตล์บ้าน ขึ้นรูปโครงและแผ่นพับ เชื่อมประกอบหน้างานหรือส่งมอบพร้อมติดตั้ง</p>
+          </div>
+          <div class="cap-row">
+            <h3>ชิ้นงานโรงงาน &amp; งานสั่งพิเศษ</h3>
+            <p>พับแผ่นสแตนเลสตามแบบวิศวกรรม ถังงาน ครอบเครื่องจักร ชิ้นส่วนตามสเปกที่ลูกค้ากำหนด</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio" class="section-alt">
+      <div class="wrap">
+        <div class="port-head">
+          <div>
+            <h2>ผลงาน</h2>
+            <p>แยกผลงานตามประเภทงาน เพื่อให้ดูง่ายและรองรับการเพิ่มผลงานจำนวนมาก โดยแต่ละประเภทแสดง 6 ช่องก่อน
+              และสามารถเลื่อนดูผลงานเพิ่มเติมได้</p>
+          </div>
+        </div>
+
+        <div class="portfolio-tabs" role="tablist" aria-label="ประเภทผลงาน">
+          <button class="portfolio-tab active" type="button" data-target="home" role="tab"
+            aria-selected="true">งานบ้านพักอาศัย</button>
+          <button class="portfolio-tab" type="button" data-target="kitchen" role="tab" aria-selected="false">งานครัว /
+            ร้านค้า</button>
+          <button class="portfolio-tab" type="button" data-target="gate" role="tab" aria-selected="false">ประตู / รั้ว /
+            ราว</button>
+          <button class="portfolio-tab" type="button" data-target="factory" role="tab" aria-selected="false">งานโรงงาน /
+            อุตสาหกรรม</button>
+          <button class="portfolio-tab" type="button" data-target="custom" role="tab"
+            aria-selected="false">งานสั่งทำพิเศษ</button>
+        </div>
+
+        <div class="portfolio-category active" id="portfolio-home" data-category="home" role="tabpanel">
+          <div class="portfolio-category-head">
+            <h3>งานบ้านพักอาศัย</h3><span>แสดง 6 ช่อง • เลื่อนดูเพิ่มเติมได้</span>
+          </div>
+          <div class="portfolio-scroll">
+            <div class="port-grid">
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>ราวบันไดสแตนเลส</h3>
+                  <p>งานบ้านพักอาศัย ออกแบบและติดตั้งตามพื้นที่จริง</p>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>ราวกันตกสแตนเลส</h3>
+                  <p>โครงสร้างแข็งแรง ขัดผิวตามความต้องการ</p>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>ชั้นวางของสแตนเลส</h3>
+                  <p>สั่งทำตามขนาดพื้นที่ ใช้งานและดูแลรักษาง่าย</p>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>เคาน์เตอร์สแตนเลสภายในบ้าน</h3>
+                  <p>พับขึ้นรูปตามแบบ พร้อมเก็บงานเรียบร้อย</p>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>งานสแตนเลสระเบียง</h3>
+                  <p>ออกแบบให้เหมาะกับพื้นที่และรูปแบบบ้าน</p>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>โต๊ะสแตนเลสสำหรับบ้าน</h3>
+                  <p>งานสั่งทำตามขนาด ใช้งานได้จริง</p>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>ตู้สแตนเลสสั่งทำ</h3>
+                  <p>ออกแบบช่องเก็บของตามการใช้งาน</p>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>งานตกแต่งสแตนเลส</h3>
+                  <p>เก็บรายละเอียดให้เข้ากับสไตล์พื้นที่</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-category" id="portfolio-kitchen" data-category="kitchen" role="tabpanel" hidden>
+          <div class="portfolio-category-head">
+            <h3>งานครัว / ร้านค้า</h3><span>แสดง 6 ช่อง • เลื่อนดูเพิ่มเติมได้</span>
+          </div>
+          <div class="portfolio-scroll">
+            <div class="port-grid">
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>เคาน์เตอร์ครัวสแตนเลส</h3>
+                  <p>พับขึ้นรูปตามพื้นที่ ทนน้ำและทำความสะอาดง่าย</p>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>โต๊ะเตรียมอาหาร</h3>
+                  <p>งานสแตนเลสสำหรับครัวและพื้นที่ประกอบอาหาร</p>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>ซิงก์ล้างจานสแตนเลส</h3>
+                  <p>ออกแบบตามขนาดพื้นที่ พร้อมเตรียมจุดติดตั้ง</p>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>ชั้นวางของหลังร้าน</h3>
+                  <p>เพิ่มพื้นที่จัดเก็บ เหมาะกับร้านอาหารและร้านค้า</p>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>เคาน์เตอร์ร้านค้า</h3>
+                  <p>พับและเชื่อมตามแบบ พร้อมเตรียมพื้นที่ติดตั้ง</p>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>รถเข็นสแตนเลส</h3>
+                  <p>ออกแบบให้เหมาะกับการใช้งานและการเคลื่อนย้าย</p>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>ตู้เก็บอุปกรณ์ครัว</h3>
+                  <p>งานสั่งทำตามขนาดและจำนวนช่องที่ต้องการ</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-category" id="portfolio-gate" data-category="gate" role="tabpanel" hidden>
+          <div class="portfolio-category-head">
+            <h3>ประตู / รั้ว / ราว</h3><span>แสดง 6 ช่อง • เลื่อนดูเพิ่มเติมได้</span>
+          </div>
+          <div class="portfolio-scroll">
+            <div class="port-grid">
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>ประตูรั้วลายกราฟิก</h3>
+                  <p>ออกแบบลายเฉพาะ พับโครงและแผ่นประกบ</p>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>ประตูสแตนเลสหน้าบ้าน</h3>
+                  <p>ออกแบบตามสไตล์บ้านและขนาดหน้างาน</p>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>รั้วสแตนเลส</h3>
+                  <p>เน้นความแข็งแรงและดูแลรักษาง่าย</p>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>ราวบันไดสแตนเลส</h3>
+                  <p>งานติดตั้งภายในและภายนอกอาคาร</p>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>ราวกันตกสแตนเลส</h3>
+                  <p>ออกแบบแนวราวให้เหมาะกับพื้นที่ใช้งาน</p>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>ราวระเบียงสแตนเลส</h3>
+                  <p>ขึ้นรูปและติดตั้งตามขนาดจริง</p>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>ประตูรั้วเลื่อน</h3>
+                  <p>จัดโครงสร้างให้เหมาะกับพื้นที่ทางเข้าออก</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-category" id="portfolio-factory" data-category="factory" role="tabpanel" hidden>
+          <div class="portfolio-category-head">
+            <h3>งานโรงงาน / อุตสาหกรรม</h3><span>แสดง 6 ช่อง • เลื่อนดูเพิ่มเติมได้</span>
+          </div>
+          <div class="portfolio-scroll">
+            <div class="port-grid">
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>ครอบเครื่องจักรโรงงาน</h3>
+                  <p>ขึ้นรูปตามแบบวิศวกรรม พับมุมตามสเปก</p>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>ถังงานสแตนเลสอุตสาหกรรม</h3>
+                  <p>งานพับและเชื่อมตามมาตรฐานที่กำหนด</p>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>ชั้นวางอุปกรณ์โรงงาน</h3>
+                  <p>ออกแบบตามพื้นที่ รองรับการใช้งานต่อเนื่อง</p>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>โต๊ะปฏิบัติงานสแตนเลส</h3>
+                  <p>งานสั่งทำสำหรับพื้นที่ผลิตและปฏิบัติงาน</p>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>ถาดและชิ้นส่วนสแตนเลส</h3>
+                  <p>พับขึ้นรูปตามแบบและขนาดที่กำหนด</p>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>งานครอบและแผ่นสแตนเลส</h3>
+                  <p>ตัด พับ และเชื่อมตามรายละเอียดหน้างาน</p>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>โครงสร้างสแตนเลสโรงงาน</h3>
+                  <p>ผลิตตามขนาดและรูปแบบที่ลูกค้ากำหนด</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-category" id="portfolio-custom" data-category="custom" role="tabpanel" hidden>
+          <div class="portfolio-category-head">
+            <h3>งานสั่งทำพิเศษ</h3><span>แสดง 6 ช่อง • เลื่อนดูเพิ่มเติมได้</span>
+          </div>
+          <div class="portfolio-scroll">
+            <div class="port-grid">
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>งานพับตามแบบลูกค้า</h3>
+                  <p>รับพับขึ้นรูปตามแบบและขนาดที่กำหนด</p>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>ชิ้นงานสแตนเลสเฉพาะทาง</h3>
+                  <p>ออกแบบและผลิตตามลักษณะการใช้งาน</p>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>โต๊ะสแตนเลสสั่งทำ</h3>
+                  <p>พับขึ้นรูปตามขนาดพื้นที่ แข็งแรงและใช้งานง่าย</p>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>ชั้นวางสแตนเลสสั่งทำ</h3>
+                  <p>ปรับจำนวนชั้นและขนาดตามพื้นที่</p>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>เคาน์เตอร์สแตนเลสพิเศษ</h3>
+                  <p>ผลิตตามแบบเฉพาะและรายละเอียดของลูกค้า</p>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>ชิ้นงานประกอบพิเศษ</h3>
+                  <p>ตัด พับ เชื่อม และเก็บงานตามแบบ</p>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-body">
+                  <h3>งานต้นแบบสแตนเลส</h3>
+                  <p>ผลิตชิ้นงานตัวอย่างก่อนทำงานจริง</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process">
+      <div class="wrap">
+        <div class="cap-head">
+          <h2>ขั้นตอนทำงาน</h2>
+          <p>ตั้งแต่วัดหน้างานจนถึงส่งมอบ ทุกขั้นตอนตรวจสอบความแม่นยำก่อนส่งต่อ</p>
+        </div>
+        <div class="process-list">
+          <div class="process-item">
+            <div class="process-num">01</div>
+            <h3>วัดหน้างาน &amp; ออกแบบ</h3>
+            <p>ลงพื้นที่วัดขนาดจริง คุยแบบและวัสดุร่วมกับลูกค้า</p>
+          </div>
+          <div class="process-item">
+            <div class="process-num">02</div>
+            <h3>ตัด &amp; พับขึ้นรูป</h3>
+            <p>คำนวณแนวพับให้ได้มุมและขนาดตรงตามแบบ</p>
+          </div>
+          <div class="process-item">
+            <div class="process-num">03</div>
+            <h3>เชื่อม &amp; ขัดผิว</h3>
+            <p>เก็บรอยเชื่อมเรียบเนียน เลือกผิวเงาหรือด้านตามต้องการ</p>
+          </div>
+          <div class="process-item">
+            <div class="process-num">04</div>
+            <h3>ติดตั้ง &amp; ส่งมอบ</h3>
+            <p>ติดตั้งหน้างานหรือจัดส่ง พร้อมตรวจสอบความเรียบร้อยครั้งสุดท้าย</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section-alt">
+      <div class="wrap contact-grid">
+        <div>
+          <h2>ขอใบเสนอราคา</h2>
+          <p>ส่งรูปหน้างานหรือแบบคร่าวๆ มาได้เลย ทีมงานประเมินราคาและนัดวัดหน้างานให้ฟรี</p>
+        </div>
+        <div class="channel-list">
+          <div class="channel">
+            <div>
+              <div class="ch-label">โทรศัพท์</div>
+              <div class="ch-value">0910182499</div>
+            </div>
+            <a class="btn btn-ghost" href="tel:0910182499">โทรเลย</a>
+          </div>
+          <div class="channel">
+            <div>
+              <div class="ch-label">LINE Official Account</div>
+              <div class="ch-value">Jxkkapat</div>
+            </div>
+            <a class="btn btn-ghost" href="https://line.me/ti/p/4pegICYOp4" target="_blank">แชท LINE</a>
+          </div>
+          <div class="channel">
+            <div>
+              <div class="ch-label">อีเมล</div>
+              <div class="ch-value">konkhum.2017@gmail.com</div>
+            </div>
+            <a class="btn btn-ghost"
+              href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#drafts?compose=CllgCJlKpLtrQdxXmPxhWNXwZNJQzPfkTdZKzStPqLJxPMPZlLrzHsZmLbBknrLqhwQPLTmhZWg">ส่งอีเมล</a>
+          </div>
+          <div class="channel">
+            <div>
+              <div class="ch-label">พื้นที่ให้บริการ</div>
+              <div class="ch-value">กรุงเทพฯ และปริมณฑล</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap foot-row">
+      <p>© 2026 ช่างเอก สแตนเลส — งานสแตนเลสพับ ตัด เชื่อม สั่งทำตามแบบ</p>
+      <p>วัดหน้างานฟรีในเขตกรุงเทพฯ และปริมณฑล</p>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', isOpen);
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+
+
+  <script>
+    document.querySelectorAll('.portfolio-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.target;
+        document.querySelectorAll('.portfolio-tab').forEach(t => {
+          const active = t === tab;
+          t.classList.toggle('active', active);
+          t.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+        document.querySelectorAll('.portfolio-category').forEach(panel => {
+          const active = panel.dataset.category === target;
+          panel.classList.toggle('active', active);
+          panel.hidden = !active;
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
