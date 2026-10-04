@@ -601,6 +601,148 @@
       font-size: 0.92rem;
     }
 
+    /* ---------- sitemap ---------- */
+    .sitemap-section {
+      background: #fff;
+    }
+
+    .sitemap-head {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 40px;
+      margin-bottom: 44px;
+      align-items: end;
+    }
+
+    .sitemap-head h2 {
+      font-size: clamp(1.7rem, 3vw, 2.2rem);
+    }
+
+    .sitemap-head p {
+      color: var(--ink-soft);
+      max-width: 55ch;
+      margin: 0;
+    }
+
+    .sitemap-tree {
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+      padding: 28px;
+      background: var(--bg-alt);
+    }
+
+    .sitemap-root {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 180px;
+      padding: 14px 22px;
+      background: var(--graphite);
+      color: #fff;
+      font-weight: 700;
+      border: 1px solid var(--graphite);
+      margin-bottom: 28px;
+    }
+
+    .sitemap-branches {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      position: relative;
+    }
+
+    .sitemap-branches::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -14px;
+      border-top: 1px solid var(--line-strong);
+    }
+
+    .sitemap-node {
+      position: relative;
+      background: #fff;
+      border: 1px solid var(--line);
+      padding: 18px;
+    }
+
+    .sitemap-node::before {
+      content: "";
+      position: absolute;
+      left: 22px;
+      top: -15px;
+      width: 1px;
+      height: 15px;
+      background: var(--line-strong);
+    }
+
+    .sitemap-node h3 {
+      font-size: 1rem;
+      margin: 0 0 10px;
+    }
+
+    .sitemap-node h3 a {
+      text-decoration: underline;
+      text-decoration-color: transparent;
+      text-underline-offset: 4px;
+      transition: text-decoration-color .2s ease;
+    }
+
+    .sitemap-node h3 a:hover {
+      text-decoration-color: var(--ink);
+    }
+
+    .sitemap-node ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .sitemap-node li {
+      color: var(--ink-soft);
+      font-size: .9rem;
+      padding: 5px 0;
+      border-bottom: 1px dashed var(--line);
+    }
+
+    .sitemap-node li:last-child {
+      border-bottom: 0;
+    }
+
+    @media (max-width: 900px) {
+      .sitemap-head {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .sitemap-branches {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 560px) {
+      .sitemap-tree {
+        padding: 20px 14px;
+      }
+
+      .sitemap-branches {
+        grid-template-columns: 1fr;
+      }
+
+      .sitemap-branches::before {
+        display: none;
+      }
+
+      .sitemap-node::before {
+        display: none;
+      }
+
+      .sitemap-root {
+        width: 100%;
+      }
+    }
+
     /* ---------- contact ---------- */
     .contact-grid {
       display: grid;
@@ -811,6 +953,31 @@
       .detail-image { aspect-ratio: 4 / 3; }
     }
 
+
+    /* ---------- ready stock products ---------- */
+    .ready-stock { padding: 90px 0; background: var(--bg-alt); }
+    .ready-stock-head { max-width: 720px; margin-bottom: 36px; }
+    .ready-stock-head h2 { margin: 0 0 10px; font-size: clamp(2rem, 4vw, 3rem); }
+    .ready-stock-head p { margin: 0; color: var(--ink-soft); }
+    .ready-stock-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+    .ready-product { background: #fff; border: 1px solid var(--line); overflow: hidden; transition: transform .25s ease, box-shadow .25s ease; }
+    .ready-product:hover { transform: translateY(-5px); box-shadow: 0 14px 35px rgba(0,0,0,.08); }
+    .ready-product-image { aspect-ratio: 4 / 3; background: #e9ecef; overflow: hidden; }
+    .ready-product-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .tile-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .tile-img { overflow: hidden; }
+
+    .ready-product-body { padding: 20px; }
+    .ready-product-tag { display: inline-block; font-size: .75rem; padding: 5px 9px; background: #eef0f2; margin-bottom: 10px; }
+    .ready-product h3 { margin: 0 0 8px; font-size: 1.15rem; }
+    .ready-product p { margin: 0 0 16px; color: var(--ink-soft); font-size: .92rem; }
+    .ready-product-bottom { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .ready-price { font-weight: 700; font-size: 1.05rem; }
+    .ready-cta { display: inline-flex; padding: 9px 14px; background: var(--graphite); color: #fff; font-size: .85rem; }
+    .ready-cta:hover { background: var(--graphite-hover); }
+    @media (max-width: 900px) { .ready-stock-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 560px) { .ready-stock { padding: 65px 0; } .ready-stock-grid { grid-template-columns: 1fr; } }
+
   </style>
 </head>
 
@@ -822,7 +989,9 @@
       <nav class="nav-links" id="navLinks">
         <a href="#capabilities">บริการ</a>
         <a href="#portfolio">ผลงาน</a>
+        <a href="#ready-stock">สินค้าพร้อมส่ง</a>
         <a href="#process">ขั้นตอนทำงาน</a>
+        <a href="#sitemap">Site Map</a>
         <a href="#contact" class="nav-cta">ขอใบเสนอราคา</a>
       </nav>
       <button class="menu-btn" id="menuBtn" aria-label="เปิดเมนู" aria-expanded="false">
@@ -886,8 +1055,7 @@
         <div class="port-head">
           <div>
             <h2>ผลงาน</h2>
-            <p>แยกผลงานตามประเภทงาน เพื่อให้ดูง่ายและรองรับการเพิ่มผลงานจำนวนมาก โดยแต่ละประเภทแสดง 6 ช่องก่อน
-              และสามารถเลื่อนดูผลงานเพิ่มเติมได้</p>
+            <p>แยกผลงานตามประเภทงาน เพื่อให้ดูง่ายและรองรับการเพิ่มผลงานจำนวนมาก โดยแต่ละประเภทมีหลายรายการ และสามารถเลื่อนดูผลงานเพิ่มเติมได้</p>
           </div>
         </div>
 
@@ -906,7 +1074,7 @@
 
         <div class="portfolio-category active" id="portfolio-home" data-category="home" role="tabpanel">
           <div class="portfolio-category-head">
-            <h3>งานบ้านพักอาศัย</h3><span>แสดง 6 ช่อง • เลื่อนดูเพิ่มเติมได้</span>
+            <h3>งานบ้านพักอาศัย</h3><span>แสดงผลงานหลายรายการ • เลื่อนดูเพิ่มเติมได้</span>
           </div>
           <div class="portfolio-scroll">
             <div class="port-grid">
@@ -932,35 +1100,35 @@
                 </div>
               </div>
               <div class="tile" tabindex="0" role="button" aria-label="ดูรายละเอียดผลงาน">
-                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-img"><img src="media/2.jpg" alt="ผลงานสแตนเลส" loading="lazy"></div>
                 <div class="tile-body">
                   <h3>เคาน์เตอร์สแตนเลสภายในบ้าน</h3>
                   <p>พับขึ้นรูปตามแบบ พร้อมเก็บงานเรียบร้อย</p>
                 </div>
               </div>
               <div class="tile" tabindex="0" role="button" aria-label="ดูรายละเอียดผลงาน">
-                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-img"><img src="media/3.jpg" alt="ผลงานสแตนเลส" loading="lazy"></div>
                 <div class="tile-body">
                   <h3>งานสแตนเลสระเบียง</h3>
                   <p>ออกแบบให้เหมาะกับพื้นที่และรูปแบบบ้าน</p>
                 </div>
               </div>
               <div class="tile" tabindex="0" role="button" aria-label="ดูรายละเอียดผลงาน">
-                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-img"><img src="media/4.jpg" alt="ผลงานสแตนเลส" loading="lazy"></div>
                 <div class="tile-body">
                   <h3>โต๊ะสแตนเลสสำหรับบ้าน</h3>
                   <p>งานสั่งทำตามขนาด ใช้งานได้จริง</p>
                 </div>
               </div>
               <div class="tile" tabindex="0" role="button" aria-label="ดูรายละเอียดผลงาน">
-                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-img"><img src="media/1.jpg" alt="ผลงานสแตนเลส" loading="lazy"></div>
                 <div class="tile-body">
                   <h3>ตู้สแตนเลสสั่งทำ</h3>
                   <p>ออกแบบช่องเก็บของตามการใช้งาน</p>
                 </div>
               </div>
               <div class="tile" tabindex="0" role="button" aria-label="ดูรายละเอียดผลงาน">
-                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-img"><img src="media/2.jpg" alt="ผลงานสแตนเลส" loading="lazy"></div>
                 <div class="tile-body">
                   <h3>งานตกแต่งสแตนเลส</h3>
                   <p>เก็บรายละเอียดให้เข้ากับสไตล์พื้นที่</p>
@@ -972,54 +1140,54 @@
 
         <div class="portfolio-category" id="portfolio-kitchen" data-category="kitchen" role="tabpanel" hidden>
           <div class="portfolio-category-head">
-            <h3>งานครัว / ร้านค้า</h3><span>แสดง 6 ช่อง • เลื่อนดูเพิ่มเติมได้</span>
+            <h3>งานครัว / ร้านค้า</h3><span>แสดงผลงานหลายรายการ • เลื่อนดูเพิ่มเติมได้</span>
           </div>
           <div class="portfolio-scroll">
             <div class="port-grid">
               <div class="tile" tabindex="0" role="button" aria-label="ดูรายละเอียดผลงาน">
-                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-img"><img src="media/3.jpg" alt="ผลงานสแตนเลส" loading="lazy"></div>
                 <div class="tile-body">
                   <h3>เคาน์เตอร์ครัวสแตนเลส</h3>
                   <p>พับขึ้นรูปตามพื้นที่ ทนน้ำและทำความสะอาดง่าย</p>
                 </div>
               </div>
               <div class="tile" tabindex="0" role="button" aria-label="ดูรายละเอียดผลงาน">
-                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-img"><img src="media/4.jpg" alt="ผลงานสแตนเลส" loading="lazy"></div>
                 <div class="tile-body">
                   <h3>โต๊ะเตรียมอาหาร</h3>
                   <p>งานสแตนเลสสำหรับครัวและพื้นที่ประกอบอาหาร</p>
                 </div>
               </div>
               <div class="tile" tabindex="0" role="button" aria-label="ดูรายละเอียดผลงาน">
-                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-img"><img src="media/1.jpg" alt="ผลงานสแตนเลส" loading="lazy"></div>
                 <div class="tile-body">
                   <h3>ซิงก์ล้างจานสแตนเลส</h3>
                   <p>ออกแบบตามขนาดพื้นที่ พร้อมเตรียมจุดติดตั้ง</p>
                 </div>
               </div>
               <div class="tile" tabindex="0" role="button" aria-label="ดูรายละเอียดผลงาน">
-                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-img"><img src="media/2.jpg" alt="ผลงานสแตนเลส" loading="lazy"></div>
                 <div class="tile-body">
                   <h3>ชั้นวางของหลังร้าน</h3>
                   <p>เพิ่มพื้นที่จัดเก็บ เหมาะกับร้านอาหารและร้านค้า</p>
                 </div>
               </div>
               <div class="tile" tabindex="0" role="button" aria-label="ดูรายละเอียดผลงาน">
-                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-img"><img src="media/3.jpg" alt="ผลงานสแตนเลส" loading="lazy"></div>
                 <div class="tile-body">
                   <h3>เคาน์เตอร์ร้านค้า</h3>
                   <p>พับและเชื่อมตามแบบ พร้อมเตรียมพื้นที่ติดตั้ง</p>
                 </div>
               </div>
               <div class="tile" tabindex="0" role="button" aria-label="ดูรายละเอียดผลงาน">
-                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-img"><img src="media/4.jpg" alt="ผลงานสแตนเลส" loading="lazy"></div>
                 <div class="tile-body">
                   <h3>รถเข็นสแตนเลส</h3>
                   <p>ออกแบบให้เหมาะกับการใช้งานและการเคลื่อนย้าย</p>
                 </div>
               </div>
               <div class="tile" tabindex="0" role="button" aria-label="ดูรายละเอียดผลงาน">
-                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-img"><img src="media/1.jpg" alt="ผลงานสแตนเลส" loading="lazy"></div>
                 <div class="tile-body">
                   <h3>ตู้เก็บอุปกรณ์ครัว</h3>
                   <p>งานสั่งทำตามขนาดและจำนวนช่องที่ต้องการ</p>
@@ -1031,54 +1199,54 @@
 
         <div class="portfolio-category" id="portfolio-gate" data-category="gate" role="tabpanel" hidden>
           <div class="portfolio-category-head">
-            <h3>ประตู / รั้ว / ราว</h3><span>แสดง 6 ช่อง • เลื่อนดูเพิ่มเติมได้</span>
+            <h3>ประตู / รั้ว / ราว</h3><span>แสดงผลงานหลายรายการ • เลื่อนดูเพิ่มเติมได้</span>
           </div>
           <div class="portfolio-scroll">
             <div class="port-grid">
               <div class="tile" tabindex="0" role="button" aria-label="ดูรายละเอียดผลงาน">
-                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-img"><img src="media/2.jpg" alt="ผลงานสแตนเลส" loading="lazy"></div>
                 <div class="tile-body">
                   <h3>ประตูรั้วลายกราฟิก</h3>
                   <p>ออกแบบลายเฉพาะ พับโครงและแผ่นประกบ</p>
                 </div>
               </div>
               <div class="tile" tabindex="0" role="button" aria-label="ดูรายละเอียดผลงาน">
-                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-img"><img src="media/3.jpg" alt="ผลงานสแตนเลส" loading="lazy"></div>
                 <div class="tile-body">
                   <h3>ประตูสแตนเลสหน้าบ้าน</h3>
                   <p>ออกแบบตามสไตล์บ้านและขนาดหน้างาน</p>
                 </div>
               </div>
               <div class="tile" tabindex="0" role="button" aria-label="ดูรายละเอียดผลงาน">
-                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-img"><img src="media/4.jpg" alt="ผลงานสแตนเลส" loading="lazy"></div>
                 <div class="tile-body">
                   <h3>รั้วสแตนเลส</h3>
                   <p>เน้นความแข็งแรงและดูแลรักษาง่าย</p>
                 </div>
               </div>
               <div class="tile" tabindex="0" role="button" aria-label="ดูรายละเอียดผลงาน">
-                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-img"><img src="media/1.jpg" alt="ผลงานสแตนเลส" loading="lazy"></div>
                 <div class="tile-body">
                   <h3>ราวบันไดสแตนเลส</h3>
                   <p>งานติดตั้งภายในและภายนอกอาคาร</p>
                 </div>
               </div>
               <div class="tile" tabindex="0" role="button" aria-label="ดูรายละเอียดผลงาน">
-                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-img"><img src="media/2.jpg" alt="ผลงานสแตนเลส" loading="lazy"></div>
                 <div class="tile-body">
                   <h3>ราวกันตกสแตนเลส</h3>
                   <p>ออกแบบแนวราวให้เหมาะกับพื้นที่ใช้งาน</p>
                 </div>
               </div>
               <div class="tile" tabindex="0" role="button" aria-label="ดูรายละเอียดผลงาน">
-                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-img"><img src="media/3.jpg" alt="ผลงานสแตนเลส" loading="lazy"></div>
                 <div class="tile-body">
                   <h3>ราวระเบียงสแตนเลส</h3>
                   <p>ขึ้นรูปและติดตั้งตามขนาดจริง</p>
                 </div>
               </div>
               <div class="tile" tabindex="0" role="button" aria-label="ดูรายละเอียดผลงาน">
-                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-img"><img src="media/4.jpg" alt="ผลงานสแตนเลส" loading="lazy"></div>
                 <div class="tile-body">
                   <h3>ประตูรั้วเลื่อน</h3>
                   <p>จัดโครงสร้างให้เหมาะกับพื้นที่ทางเข้าออก</p>
@@ -1090,54 +1258,54 @@
 
         <div class="portfolio-category" id="portfolio-factory" data-category="factory" role="tabpanel" hidden>
           <div class="portfolio-category-head">
-            <h3>งานโรงงาน / อุตสาหกรรม</h3><span>แสดง 6 ช่อง • เลื่อนดูเพิ่มเติมได้</span>
+            <h3>งานโรงงาน / อุตสาหกรรม</h3><span>แสดงผลงานหลายรายการ • เลื่อนดูเพิ่มเติมได้</span>
           </div>
           <div class="portfolio-scroll">
             <div class="port-grid">
               <div class="tile" tabindex="0" role="button" aria-label="ดูรายละเอียดผลงาน">
-                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-img"><img src="media/1.jpg" alt="ผลงานสแตนเลส" loading="lazy"></div>
                 <div class="tile-body">
                   <h3>ครอบเครื่องจักรโรงงาน</h3>
                   <p>ขึ้นรูปตามแบบวิศวกรรม พับมุมตามสเปก</p>
                 </div>
               </div>
               <div class="tile" tabindex="0" role="button" aria-label="ดูรายละเอียดผลงาน">
-                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-img"><img src="media/2.jpg" alt="ผลงานสแตนเลส" loading="lazy"></div>
                 <div class="tile-body">
                   <h3>ถังงานสแตนเลสอุตสาหกรรม</h3>
                   <p>งานพับและเชื่อมตามมาตรฐานที่กำหนด</p>
                 </div>
               </div>
               <div class="tile" tabindex="0" role="button" aria-label="ดูรายละเอียดผลงาน">
-                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-img"><img src="media/3.jpg" alt="ผลงานสแตนเลส" loading="lazy"></div>
                 <div class="tile-body">
                   <h3>ชั้นวางอุปกรณ์โรงงาน</h3>
                   <p>ออกแบบตามพื้นที่ รองรับการใช้งานต่อเนื่อง</p>
                 </div>
               </div>
               <div class="tile" tabindex="0" role="button" aria-label="ดูรายละเอียดผลงาน">
-                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-img"><img src="media/4.jpg" alt="ผลงานสแตนเลส" loading="lazy"></div>
                 <div class="tile-body">
                   <h3>โต๊ะปฏิบัติงานสแตนเลส</h3>
                   <p>งานสั่งทำสำหรับพื้นที่ผลิตและปฏิบัติงาน</p>
                 </div>
               </div>
               <div class="tile" tabindex="0" role="button" aria-label="ดูรายละเอียดผลงาน">
-                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-img"><img src="media/1.jpg" alt="ผลงานสแตนเลส" loading="lazy"></div>
                 <div class="tile-body">
                   <h3>ถาดและชิ้นส่วนสแตนเลส</h3>
                   <p>พับขึ้นรูปตามแบบและขนาดที่กำหนด</p>
                 </div>
               </div>
               <div class="tile" tabindex="0" role="button" aria-label="ดูรายละเอียดผลงาน">
-                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-img"><img src="media/2.jpg" alt="ผลงานสแตนเลส" loading="lazy"></div>
                 <div class="tile-body">
                   <h3>งานครอบและแผ่นสแตนเลส</h3>
                   <p>ตัด พับ และเชื่อมตามรายละเอียดหน้างาน</p>
                 </div>
               </div>
               <div class="tile" tabindex="0" role="button" aria-label="ดูรายละเอียดผลงาน">
-                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-img"><img src="media/3.jpg" alt="ผลงานสแตนเลส" loading="lazy"></div>
                 <div class="tile-body">
                   <h3>โครงสร้างสแตนเลสโรงงาน</h3>
                   <p>ผลิตตามขนาดและรูปแบบที่ลูกค้ากำหนด</p>
@@ -1149,54 +1317,54 @@
 
         <div class="portfolio-category" id="portfolio-custom" data-category="custom" role="tabpanel" hidden>
           <div class="portfolio-category-head">
-            <h3>งานสั่งทำพิเศษ</h3><span>แสดง 6 ช่อง • เลื่อนดูเพิ่มเติมได้</span>
+            <h3>งานสั่งทำพิเศษ</h3><span>แสดงผลงานหลายรายการ • เลื่อนดูเพิ่มเติมได้</span>
           </div>
           <div class="portfolio-scroll">
             <div class="port-grid">
               <div class="tile" tabindex="0" role="button" aria-label="ดูรายละเอียดผลงาน">
-                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-img"><img src="media/4.jpg" alt="ผลงานสแตนเลส" loading="lazy"></div>
                 <div class="tile-body">
                   <h3>งานพับตามแบบลูกค้า</h3>
                   <p>รับพับขึ้นรูปตามแบบและขนาดที่กำหนด</p>
                 </div>
               </div>
               <div class="tile" tabindex="0" role="button" aria-label="ดูรายละเอียดผลงาน">
-                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-img"><img src="media/1.jpg" alt="ผลงานสแตนเลส" loading="lazy"></div>
                 <div class="tile-body">
                   <h3>ชิ้นงานสแตนเลสเฉพาะทาง</h3>
                   <p>ออกแบบและผลิตตามลักษณะการใช้งาน</p>
                 </div>
               </div>
               <div class="tile" tabindex="0" role="button" aria-label="ดูรายละเอียดผลงาน">
-                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-img"><img src="media/2.jpg" alt="ผลงานสแตนเลส" loading="lazy"></div>
                 <div class="tile-body">
                   <h3>โต๊ะสแตนเลสสั่งทำ</h3>
                   <p>พับขึ้นรูปตามขนาดพื้นที่ แข็งแรงและใช้งานง่าย</p>
                 </div>
               </div>
               <div class="tile" tabindex="0" role="button" aria-label="ดูรายละเอียดผลงาน">
-                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-img"><img src="media/3.jpg" alt="ผลงานสแตนเลส" loading="lazy"></div>
                 <div class="tile-body">
                   <h3>ชั้นวางสแตนเลสสั่งทำ</h3>
                   <p>ปรับจำนวนชั้นและขนาดตามพื้นที่</p>
                 </div>
               </div>
               <div class="tile" tabindex="0" role="button" aria-label="ดูรายละเอียดผลงาน">
-                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-img"><img src="media/4.jpg" alt="ผลงานสแตนเลส" loading="lazy"></div>
                 <div class="tile-body">
                   <h3>เคาน์เตอร์สแตนเลสพิเศษ</h3>
                   <p>ผลิตตามแบบเฉพาะและรายละเอียดของลูกค้า</p>
                 </div>
               </div>
               <div class="tile" tabindex="0" role="button" aria-label="ดูรายละเอียดผลงาน">
-                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-img"><img src="media/1.jpg" alt="ผลงานสแตนเลส" loading="lazy"></div>
                 <div class="tile-body">
                   <h3>ชิ้นงานประกอบพิเศษ</h3>
                   <p>ตัด พับ เชื่อม และเก็บงานตามแบบ</p>
                 </div>
               </div>
               <div class="tile" tabindex="0" role="button" aria-label="ดูรายละเอียดผลงาน">
-                <div class="tile-img"><span class="ph-label">รอใส่ภาพผลงาน</span></div>
+                <div class="tile-img"><img src="media/2.jpg" alt="ผลงานสแตนเลส" loading="lazy"></div>
                 <div class="tile-body">
                   <h3>งานต้นแบบสแตนเลส</h3>
                   <p>ผลิตชิ้นงานตัวอย่างก่อนทำงานจริง</p>
@@ -1204,6 +1372,120 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- READY STOCK PRODUCTS -->
+    <section id="ready-stock" class="ready-stock">
+      <div class="wrap">
+        <div class="ready-stock-head">
+          <p class="eyebrow-note">READY STOCK</p>
+          <h2>สินค้าพร้อมส่ง</h2>
+          <p>รวมชิ้นงานสแตนเลสและงานโลหะพร้อมส่ง 10 รายการ สามารถสอบถามราคาและจำนวนสินค้ากับทีมงานได้ทันที</p>
+        </div>
+
+        <div class="ready-stock-grid">
+          <article class="ready-product">
+            <div class="ready-product-image"><img src="images/ready-01.jpg" alt="ชั้นวางสแตนเลสพร้อมส่ง"></div>
+            <div class="ready-product-body">
+              <span class="ready-product-tag">พร้อมส่ง</span>
+              <h3>ชั้นวางสแตนเลส</h3>
+              <p>ชั้นวางอเนกประสงค์ แข็งแรง ทำความสะอาดง่าย เหมาะสำหรับบ้านและร้านค้า</p>
+              <div class="ready-product-bottom"><span class="ready-price">สอบถามราคา</span><a class="ready-cta" href="#contact">สั่งซื้อ</a></div>
+            </div>
+          </article>
+
+          <article class="ready-product">
+            <div class="ready-product-image"><img src="images/ready-02.jpg" alt="โต๊ะสแตนเลสพร้อมส่ง"></div>
+            <div class="ready-product-body">
+              <span class="ready-product-tag">พร้อมส่ง</span>
+              <h3>โต๊ะสแตนเลส</h3>
+              <p>โต๊ะสแตนเลสสำหรับใช้งานทั่วไป แข็งแรง รองรับการใช้งานในครัวและร้านค้า</p>
+              <div class="ready-product-bottom"><span class="ready-price">สอบถามราคา</span><a class="ready-cta" href="#contact">สั่งซื้อ</a></div>
+            </div>
+          </article>
+
+          <article class="ready-product">
+            <div class="ready-product-image"><img src="images/ready-03.jpg" alt="ซิงค์ล้างจานสแตนเลสพร้อมส่ง"></div>
+            <div class="ready-product-body">
+              <span class="ready-product-tag">พร้อมส่ง</span>
+              <h3>ซิงค์ล้างจานสแตนเลส</h3>
+              <p>ซิงค์สแตนเลสสำหรับครัว แข็งแรง ใช้งานสะดวก เหมาะกับบ้านและร้านอาหาร</p>
+              <div class="ready-product-bottom"><span class="ready-price">สอบถามราคา</span><a class="ready-cta" href="#contact">สั่งซื้อ</a></div>
+            </div>
+          </article>
+
+          <article class="ready-product">
+            <div class="ready-product-image"><img src="images/ready-04.jpg" alt="รถเข็นสแตนเลสพร้อมส่ง"></div>
+            <div class="ready-product-body">
+              <span class="ready-product-tag">พร้อมส่ง</span>
+              <h3>รถเข็นสแตนเลส</h3>
+              <p>รถเข็นสำหรับขนย้ายอุปกรณ์ เหมาะสำหรับร้านอาหาร ครัว และงานอุตสาหกรรม</p>
+              <div class="ready-product-bottom"><span class="ready-price">สอบถามราคา</span><a class="ready-cta" href="#contact">สั่งซื้อ</a></div>
+            </div>
+          </article>
+
+          <article class="ready-product">
+            <div class="ready-product-image"><img src="images/ready-05.jpg" alt="ราวสแตนเลสพร้อมส่ง"></div>
+            <div class="ready-product-body">
+              <span class="ready-product-tag">พร้อมส่ง</span>
+              <h3>ราวสแตนเลส</h3>
+              <p>ราวสแตนเลสสำหรับใช้งานภายในและภายนอกอาคาร สามารถเลือกขนาดได้</p>
+              <div class="ready-product-bottom"><span class="ready-price">สอบถามราคา</span><a class="ready-cta" href="#contact">สั่งซื้อ</a></div>
+            </div>
+          </article>
+
+          <article class="ready-product">
+            <div class="ready-product-image"><img src="images/ready-06.jpg" alt="ตู้สแตนเลสพร้อมส่ง"></div>
+            <div class="ready-product-body">
+              <span class="ready-product-tag">พร้อมส่ง</span>
+              <h3>ตู้สแตนเลส</h3>
+              <p>ตู้เก็บของสแตนเลส แข็งแรง ทนความชื้น เหมาะสำหรับครัวและพื้นที่ใช้งานทั่วไป</p>
+              <div class="ready-product-bottom"><span class="ready-price">สอบถามราคา</span><a class="ready-cta" href="#contact">สั่งซื้อ</a></div>
+            </div>
+          </article>
+
+          <article class="ready-product">
+            <div class="ready-product-image"><img src="media/2.jpg" alt="ชั้นตะแกรงสแตนเลสพร้อมส่ง" loading="lazy"></div>
+            <div class="ready-product-body">
+              <span class="ready-product-tag">พร้อมส่ง</span>
+              <h3>ชั้นตะแกรงสแตนเลส</h3>
+              <p>ชั้นตะแกรงสำหรับจัดเก็บของ ใช้งานง่าย แข็งแรง เหมาะสำหรับบ้าน ร้านค้า และครัว</p>
+              <div class="ready-product-bottom"><span class="ready-price">สอบถามราคา</span><a class="ready-cta" href="#contact">สั่งซื้อ</a></div>
+            </div>
+          </article>
+
+          <article class="ready-product">
+            <div class="ready-product-image"><img src="media/3.jpg" alt="โต๊ะเตรียมอาหารสแตนเลสพร้อมส่ง" loading="lazy"></div>
+            <div class="ready-product-body">
+              <span class="ready-product-tag">พร้อมส่ง</span>
+              <h3>โต๊ะเตรียมอาหารสแตนเลส</h3>
+              <p>โต๊ะเตรียมอาหารสำหรับร้านอาหารและครัวกลาง ทำความสะอาดง่ายและทนต่อการใช้งาน</p>
+              <div class="ready-product-bottom"><span class="ready-price">สอบถามราคา</span><a class="ready-cta" href="#contact">สั่งซื้อ</a></div>
+            </div>
+          </article>
+
+          <article class="ready-product">
+            <div class="ready-product-image"><img src="media/4.jpg" alt="ชั้นวางของครัวสแตนเลสพร้อมส่ง" loading="lazy"></div>
+            <div class="ready-product-body">
+              <span class="ready-product-tag">พร้อมส่ง</span>
+              <h3>ชั้นวางของครัวสแตนเลส</h3>
+              <p>ชั้นวางสำหรับครัวและร้านอาหาร ช่วยเพิ่มพื้นที่จัดเก็บและดูแลรักษาได้ง่าย</p>
+              <div class="ready-product-bottom"><span class="ready-price">สอบถามราคา</span><a class="ready-cta" href="#contact">สั่งซื้อ</a></div>
+            </div>
+          </article>
+
+          <article class="ready-product">
+            <div class="ready-product-image"><img src="media/1.jpg" alt="โต๊ะทำงานสแตนเลสพร้อมส่ง" loading="lazy"></div>
+            <div class="ready-product-body">
+              <span class="ready-product-tag">พร้อมส่ง</span>
+              <h3>โต๊ะทำงานสแตนเลส</h3>
+              <p>โต๊ะสแตนเลสสำหรับพื้นที่ผลิต ร้านค้า และงานทั่วไป แข็งแรงและทำความสะอาดง่าย</p>
+              <div class="ready-product-bottom"><span class="ready-price">สอบถามราคา</span><a class="ready-cta" href="#contact">สั่งซื้อ</a></div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -1235,6 +1517,79 @@
             <div class="process-num">04</div>
             <h3>ติดตั้ง &amp; ส่งมอบ</h3>
             <p>ติดตั้งหน้างานหรือจัดส่ง พร้อมตรวจสอบความเรียบร้อยครั้งสุดท้าย</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SITE MAP -->
+    <section id="sitemap" class="sitemap-section">
+      <div class="wrap">
+        <div class="sitemap-head">
+          <h2>Site Map</h2>
+          <p>โครงสร้างเว็บไซต์ช่วยให้ลูกค้าเข้าถึงบริการ ผลงาน สินค้าพร้อมส่ง ขั้นตอนการทำงาน และช่องทางติดต่อได้ง่ายจากหน้าเดียว</p>
+        </div>
+
+        <div class="sitemap-tree">
+          <a href="#top" class="sitemap-root">ช่างTong Stainless &amp; Metal Work</a>
+
+          <div class="sitemap-branches">
+            <div class="sitemap-node">
+              <h3><a href="#capabilities">บริการ</a></h3>
+              <ul>
+                <li>ราวบันได &amp; ราวกันตก</li>
+                <li>ครัวสแตนเลส &amp; เคาน์เตอร์</li>
+                <li>ประตู รั้ว &amp; งานเหล็กดัด</li>
+                <li>ชิ้นงานโรงงาน &amp; งานสั่งพิเศษ</li>
+              </ul>
+            </div>
+
+            <div class="sitemap-node">
+              <h3><a href="#portfolio">ผลงาน</a></h3>
+              <ul>
+                <li>งานบ้านพักอาศัย</li>
+                <li>งานครัว / ร้านค้า</li>
+                <li>ประตู / รั้ว / ราว</li>
+                <li>งานโรงงาน / อุตสาหกรรม</li>
+                <li>งานสั่งทำพิเศษ</li>
+              </ul>
+            </div>
+
+            <div class="sitemap-node">
+              <h3><a href="#ready-stock">สินค้าพร้อมส่ง</a></h3>
+              <ul>
+                <li>ชั้นวางสแตนเลส</li>
+                <li>โต๊ะสแตนเลส</li>
+                <li>ซิงค์ล้างจานสแตนเลส</li>
+                <li>รถเข็นสแตนเลส</li>
+                <li>ราวสแตนเลส</li>
+                <li>ตู้สแตนเลส</li>
+                <li>ชั้นตะแกรงสแตนเลส</li>
+                <li>โต๊ะเตรียมอาหารสแตนเลส</li>
+                <li>ชั้นวางของครัวสแตนเลส</li>
+                <li>โต๊ะทำงานสแตนเลส</li>
+              </ul>
+            </div>
+
+            <div class="sitemap-node">
+              <h3><a href="#process">ขั้นตอนทำงาน</a></h3>
+              <ul>
+                <li>01 วัดหน้างาน &amp; ออกแบบ</li>
+                <li>02 ตัด &amp; พับขึ้นรูป</li>
+                <li>03 เชื่อม &amp; ขัดผิว</li>
+                <li>04 ติดตั้ง &amp; ส่งมอบ</li>
+              </ul>
+            </div>
+
+            <div class="sitemap-node">
+              <h3><a href="#contact">ติดต่อ / ขอใบเสนอราคา</a></h3>
+              <ul>
+                <li>โทรศัพท์</li>
+                <li>LINE Official Account</li>
+                <li>อีเมล</li>
+                <li>พื้นที่ให้บริการ กรุงเทพฯ และปริมณฑล</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
